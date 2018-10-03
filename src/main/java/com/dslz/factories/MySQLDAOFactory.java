@@ -14,7 +14,7 @@ import com.dslz.services.UserService;
 public class MySQLDAOFactory extends DAOFactory {
 	
 	public static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	public static final String DB_URL = "jdbc:mysql://localhost:3306/practiceusersdb";
+	public static final String DB_URL = "jdbc:mysql://localhost:3306/practiceusersdb?autoReconnect=true&useSSL=false";
 	
 	private static final String JDBC_USERNAME = System.getenv("JDBC_USERNAME");
 	private static final String JDBC_PASSWORD = System.getenv("JDBC_PASSWORD");
