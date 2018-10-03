@@ -21,5 +21,13 @@ public class UserService {
 	public List<User> findAllUsers() {
 		return myUserDAO.findAllUsers();
 	}
+	
+	public boolean createUser(User user) {
+		return myUserDAO.createUser(user);
+	}
+	
+	public User findUserById(Integer id) {
+		return myUserDAO.findUserById(id);
+	}
 
 }
