@@ -18,6 +18,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import com.dslz.beans.User;
 import com.dslz.daos.MySQLUserDAO;
@@ -117,7 +118,7 @@ public class TestDBConnection {
             
             User user2 = new MySQLUserDAO().findUserById(1);
             assertEquals(user, user2);
-            connection.rollback();
+            //TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             
 		} catch (Exception e) {
 			e.printStackTrace();
