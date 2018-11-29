@@ -55,7 +55,7 @@ public class SpringHibernateConfig {
 			order1.setBillToContactId(1);
 			session.persist(contact1);
 			session.persist(order1);
-			contact2.setName("Fucker");
+			contact2.setName("Click");
 			/*DAOFactory daoFactory = applicationContext.getBean("mySQLDAOFactory", MySQLDAOFactory.class);
 			User user1 = new User();
 			user1.setFullname("Frasure Mayer");
