@@ -3,26 +3,17 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xmlns:context="http://www.springframework.org/schema/context"
    xmlns:tx="http://www.springframework.org/schema/tx"
-   xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-   xmlns:aop = "http://www.springframework.org/schema/aop"
    xsi:schemaLocation="http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans.xsd
    http://www.springframework.org/schema/context
    http://www.springframework.org/schema/context/spring-context.xsd
    http://www.springframework.org/schema/tx
-   http://www.springframework.org/schema/tx/spring-tx.xsd
-   http://www.springframework.org/schema/data/jpa
-   http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
-   http://www.springframework.org/schema/aop 
-   http://www.springframework.org/schema/aop/spring-aop.xsd">
+   http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<tx:annotation-driven transaction-manager = "transactionManager"/><!-- @Transactional -->
-	<jpa:repositories base-package="com.dslz.repositories" entity-manager-factory-ref="sessionFactory"/>
 	
-	<!-- <context:annotation-config/> No need to use thise when component-scan is in this xml-->
-	<context:component-scan base-package="com.dslz.*"/>
-	
-	<aop:aspectj-autoproxy/>
+	<context:annotation-config/>
+	<context:component-scan base-package="com.dslz.beans"/>
 	
 	<!-- 1. DataSource -->
 	<bean name="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
@@ -52,13 +43,10 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<bean name = "springHibernateConfig" class = "com.dslz.application.SpringHibernateConfig">
+	<bean name = "rollBackExample" class = "com.dslz.dbConnection.RollBackExample">
 		<property name = "sessionFactory" ref = "sessionFactory"></property>
 	</bean>
 	
 	<bean id="mySQLDAOFactory" class="com.dslz.factories.MySQLDAOFactory"/>
-	<!-- <bean id="userRepository" class="com.dslz.daos.MySQLUserDAO"/> -->
-	<bean id="contact" class="com.dslz.beans.Contact"/>
-	<bean id="logging" class="com.dslz.aop.Logging"/>
 	
 </beans>

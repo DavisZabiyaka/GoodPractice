@@ -1,10 +1,25 @@
 package com.dslz.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+@Entity(name = "Users")
 public class User {
 	
+	@Id
+	@Column(name = "USER_ID")
+	@SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
 	private Integer id;
+	@Column(name = "FULLNAME")
 	private String fullname;
+	@Column(name = "EMAIL")
 	private String email;
+	@Column(name = "PASSWORD")
 	private String password;
 	
 	public User() {
